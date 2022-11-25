@@ -25,3 +25,19 @@ df.createOrReplaceTempView("PySpark_data")
 
 #processing in spark.sql
 spark.sql("select * from PySpark_data")
+
+#Storing data in a variable
+x = select("select avg(age) from PySpark_data").collect()[0][0]
+
+#using the stored vaiable
+print(x +2)
+
+#processing in spark.sql
+spark.sql("select avg(age) as A, country from PySpark_data order by country").show
+
+#processing in spark.sql
+spark.sql("select * from PySpark_data where age>=25 AND <=30).show()
+
+#refering to dataframe with spark.sql
+df.groupby("country").avg("age").orderBy("id", ascending = False).show()
+
