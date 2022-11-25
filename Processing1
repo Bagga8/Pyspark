@@ -1,8 +1,14 @@
-!pip install -pyspark
+#installing pyspark
+!pip install pyspark
 
-from pyspark.sql import SparkSession
+#importing pyspark
+from pyspark.sql import pyspark
 
-from pyspark.sql.functions import col
+#import a spark session
+from pyspark.sql import Sparksession
+
+#create a spark session
+spark = SparkSession.builder.master("local[*]").getOrCreate
 
 #importing files
 from google.colab import files 
