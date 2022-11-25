@@ -1,1 +1,28 @@
+!pip install -pyspark
+
+from pyspark.sql import SparkSession
+
+from pyspark.sql.functions import col
+
+#importing files
+from google.colab import files 
+files.upload()
+
+#creating data frame and load it
+df = spark.read.format("csv").option("header", "true").option("mode", "failfast").load("PySpark_data.csv")
+
+#get output
+df.show(3)
+
+#Creating a temporary view
+df.createOrReplaceTempView("PySpark_data")
+
+#processing in spark.sql
+spark.sql("select * from PySpark_data")
+
+#Processsing in spark.sql
+spark.sql(select count(*) from PySpark_data group by age").show
+
+#Processsing in spark.sql
+spark.sql(select name from PySpark_data where age < 30").show
 
